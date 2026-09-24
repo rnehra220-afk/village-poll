@@ -41,7 +41,7 @@ export default function AdSlot({ id }) {
     // 2. Create the loader script
     const loaderScript = document.createElement("script");
     loaderScript.type = "text/javascript";
-    loaderScript.src = `//www.highperformanceformat.com/${slot.adsterraId}/invoke.js`;
+    loaderScript.src = `//www.highrevenueformat.com/${slot.adsterraId}/invoke.js`;
     container.appendChild(loaderScript);
     
     adLoaded.current = true;
