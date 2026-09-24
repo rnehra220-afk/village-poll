@@ -35,6 +35,16 @@ export default function Header() {
                 {l.label}
               </Link>
             ))}
+            {process.env.NEXT_PUBLIC_ADS_ENABLED !== "false" && (
+               <a 
+                 href="https://www.profitableratecpmnetwork.com/utj3muwd?key=2ba216118a39b08f43f54ed7c1e2f66f" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 className="px-3 py-2 rounded-lg text-sm font-medium text-amber-700 hover:bg-amber-100 min-h-[44px] flex items-center ml-2 border border-amber-200 bg-amber-50"
+               >
+                 {lang === 'hi' ? 'विशेष ऑफर' : 'Special Offers'}
+               </a>
+            )}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -77,6 +87,16 @@ export default function Header() {
                 {l.label}
               </Link>
             ))}
+            {process.env.NEXT_PUBLIC_ADS_ENABLED !== "false" && (
+               <a 
+                 href="https://www.profitableratecpmnetwork.com/utj3muwd?key=2ba216118a39b08f43f54ed7c1e2f66f" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 className="px-3 py-3 rounded-lg text-sm font-medium text-amber-700 hover:bg-amber-100 min-h-[48px] flex items-center mt-2 border border-amber-200 bg-amber-50"
+               >
+                 {lang === 'hi' ? 'विशेष ऑफर' : 'Special Offers'}
+               </a>
+            )}
           </nav>
         )}
       </div>
