@@ -37,5 +37,11 @@ export async function GET() {
     trending: withVotes(trending),
     recent: withVotes(recent),
     stats: { polls: pollCount || 0, votes: voteCount || 0 },
+  }, {
+    headers: {
+      "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+      "Pragma": "no-cache",
+      "Expires": "0",
+    }
   });
 }

@@ -25,7 +25,7 @@ export default function HomeLists() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("/api/trending")
+    fetch("/api/trending?_t=" + Date.now(), { cache: "no-store" })
       .then((r) => (r.ok ? r.json() : null))
       .then(setData)
       .catch(() => setData({ trending: [], recent: [] }));
@@ -76,7 +76,7 @@ export function HeroStats() {
   const { t } = useLang();
   const [stats, setStats] = useState(null);
   useEffect(() => {
-    fetch("/api/trending")
+    fetch("/api/trending?_t=" + Date.now(), { cache: "no-store" })
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => d?.stats && setStats(d.stats))
       .catch(() => {});
