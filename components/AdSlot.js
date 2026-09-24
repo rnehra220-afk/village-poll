@@ -15,36 +15,44 @@ export default function AdSlot({ id }) {
   useEffect(() => {
     if (!slot || !ADS_ENABLED || !containerRef.current || adLoaded.current) return;
     
-    // Check if we have an Adsterra ID for this slot
-    if (!slot.adsterraId) return;
-
-    // We must append the script elements manually to ensure they run inside the specific div
     const container = containerRef.current;
     
-    // Clear any existing content
-    container.innerHTML = "";
-    
-    // 1. Create the options script
-    const confScript = document.createElement("script");
-    confScript.type = "text/javascript";
-    confScript.text = `
-      atOptions = {
-        'key' : '${slot.adsterraId}',
-        'format' : 'iframe',
-        'height' : ${slot.height},
-        'width' : ${slot.width},
-        'params' : {}
-      };
-    `;
-    container.appendChild(confScript);
+    if (slot.type === 'native' && slot.nativeId) {
+      // Native Ad format
+      container.innerHTML = `<div id="container-${slot.nativeId}"></div>`;
+      
+      const loaderScript = document.createElement("script");
+      loaderScript.type = "text/javascript";
+      loaderScript.async = true;
+      loaderScript.setAttribute('data-cfasync', 'false');
+      loaderScript.src = `https://${slot.nativeDomain}/${slot.nativeId}/invoke.js`;
+      container.appendChild(loaderScript);
+      
+      adLoaded.current = true;
+    } else if (slot.type === 'banner' && slot.adsterraId) {
+      // Standard Banner format (atOptions)
+      container.innerHTML = "";
+      
+      const confScript = document.createElement("script");
+      confScript.type = "text/javascript";
+      confScript.text = `
+        atOptions = {
+          'key' : '${slot.adsterraId}',
+          'format' : 'iframe',
+          'height' : ${slot.height},
+          'width' : ${slot.width},
+          'params' : {}
+        };
+      `;
+      container.appendChild(confScript);
 
-    // 2. Create the loader script
-    const loaderScript = document.createElement("script");
-    loaderScript.type = "text/javascript";
-    loaderScript.src = `//www.highrevenueformat.com/${slot.adsterraId}/invoke.js`;
-    container.appendChild(loaderScript);
-    
-    adLoaded.current = true;
+      const loaderScript = document.createElement("script");
+      loaderScript.type = "text/javascript";
+      loaderScript.src = `//www.highrevenueformat.com/${slot.adsterraId}/invoke.js`;
+      container.appendChild(loaderScript);
+      
+      adLoaded.current = true;
+    }
     
     // Cleanup on unmount (important for SPA navigation)
     return () => {
