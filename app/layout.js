@@ -53,6 +53,16 @@ export default function RootLayout({ children }) {
           <main className="min-h-[60vh]">{children}</main>
           <Footer />
         </LanguageProvider>
+        
+        {/* Adsterra Global Ads */}
+        {process.env.ADS_ENABLED !== "false" && (
+          <>
+            {/* Popunder */}
+            <script type='text/javascript' src='//pl25324888.profitablecpmrate.com/6e/82/f2/6e82f25b271d4976c66f56e9c0db5390.js'></script>
+            {/* Social Bar */}
+            <script type='text/javascript' src='//pl25324896.profitablecpmrate.com/15/45/5a/15455a409f80a3a7803a61f5c6b904d9.js'></script>
+          </>
+        )}
       </body>
     </html>
   );
