@@ -60,7 +60,7 @@ export default function RootLayout({ children }) {
             {/* Popunder */}
             <script type='text/javascript' src='https://pl31496551.profitableratecpmnetwork.com/9a/43/61/9a436105662ca1e2ece319e9e7744dc2.js'></script>
             {/* Social Bar */}
-            <script type='text/javascript' src='//pl25324896.profitablecpmrate.com/15/45/5a/15455a409f80a3a7803a61f5c6b904d9.js'></script>
+            <script type='text/javascript' src='https://pl31496549.profitableratecpmnetwork.com/cb/5a/d1/cb5ad1dc774270e7aefadec92cd00b1b.js'></script>
           </>
         )}
       </body>
